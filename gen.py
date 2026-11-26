@@ -34,10 +34,10 @@ ol,ul{padding-left:1.4em}li{margin:4px 0}@media(max-width:600px){article{padding
 def page(title, desc, body, path, canonical_type="website", extra_head=""):
     url = BASE + path
     nav = "".join(f'<a href="{PREFIX}/category/{CSLUG[c]}/">{e(c)}</a>' for c in CATS)
-    return f"""<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+    return f"""<!DOCTYPE html><html lang="ja"><head><script>(function(w,d,s,l,i){{w[l]=w[l]||[];w[l].push({{'gtm.start':new Date().getTime(),event:'gtm.js'}});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);}})(window,document,'script','dataLayer','GTM-MT8ZLKMQ');</script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{e(title)}</title><meta name="description" content="{e(desc)}"><link rel="canonical" href="{url}">
 <meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}"><meta property="og:type" content="{canonical_type}"><meta property="og:url" content="{url}">
-<link rel="stylesheet" href="{PREFIX}/style.css">{extra_head}</head><body>
+<link rel="stylesheet" href="{PREFIX}/style.css">{extra_head}</head><body><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MT8ZLKMQ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <header><div class="in"><div><a class="logo" href="{PREFIX}/">Kitten Paw <span>Tutorials</span></a><p class="tag">{e(TAGLINE)}</p></div><nav>{nav}</nav></div></header>
 <main>{body}</main>
 <footer><div class="in"><p>{e(AMZNOTE)}</p><p><a href="{PREFIX}/about/">このサイトについて</a> ・ <a href="{PREFIX}/privacy/">プライバシーポリシー</a> ・ <a href="{YT}" rel="noopener">YouTubeチャンネル</a></p><p>© 2026 {e(SITE)}</p></div></footer></body></html>"""
