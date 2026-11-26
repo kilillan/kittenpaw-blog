@@ -1,0 +1,17 @@
+*{box-sizing:border-box}body{margin:0;font-family:"Hiragino Sans","Noto Sans JP","Yu Gothic",sans-serif;background:#f4f0e9;color:#181716;line-height:1.85}
+a{color:#9a6b2f}header{background:#181716;color:#fff}header .in,main,footer .in{max-width:860px;margin:0 auto;padding:0 20px}
+header .in{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding:18px 20px}
+header a.logo{color:#fff;text-decoration:none;font-weight:800;font-size:22px;letter-spacing:.02em}header a.logo span{color:#b88a48}
+nav a{color:#ddd;text-decoration:none;margin-left:14px;font-size:14px}nav a:hover{color:#b88a48}
+.tag{font-size:13px;color:#bbb;margin:0}main{padding-top:28px;padding-bottom:40px}
+.card{display:block;background:#fff;border:1px solid #d6cec2;border-radius:16px;padding:20px 22px;margin:0 0 16px;text-decoration:none;color:#181716;transition:transform .15s}
+.card:hover{transform:translateY(-2px);border-color:#b88a48}.card h2{font-size:19px;margin:6px 0 6px;line-height:1.5}.card p{margin:0;color:#6e665c;font-size:14px}
+.cat{display:inline-block;font-size:12px;font-weight:700;background:#181716;color:#fff;border-radius:20px;padding:2px 12px}.date{font-size:12px;color:#8a8275;margin-left:8px}
+article{background:#fff;border:1px solid #d6cec2;border-radius:18px;padding:28px 30px}article h1{font-size:26px;line-height:1.5;margin:10px 0 8px}
+article h2{font-size:20px;border-left:6px solid #b88a48;padding-left:12px;margin:34px 0 10px}.disc{font-size:13px;color:#8a8275;margin:0 0 14px}
+.summary{background:#faf6ee;border:1px solid #e6dccb;border-radius:14px;padding:16px 18px;margin:16px 0}.summary b{color:#9a6b2f}
+.items{display:grid;gap:12px;margin:18px 0}.item{display:flex;justify-content:space-between;align-items:center;gap:12px;border:1px solid #d6cec2;border-radius:14px;padding:14px 16px;background:#fffdf9}
+.item .n{font-weight:700}.item .s{font-size:13px;color:#8a8275}.btn{flex-shrink:0;background:#ff9900;color:#181716;font-weight:800;text-decoration:none;border-radius:24px;padding:9px 18px;font-size:14px}
+.yt{display:inline-block;margin-top:24px;background:#e2403a;color:#fff;text-decoration:none;font-weight:800;border-radius:24px;padding:10px 20px}
+footer{background:#181716;color:#aaa;font-size:13px;padding:24px 0;margin-top:30px}footer a{color:#ddd}
+ol,ul{padding-left:1.4em}li{margin:4px 0}@media(max-width:600px){article{padding:20px 18px}article h1{font-size:22px}.item{flex-direction:column;align-items:flex-start}}

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kilillan.github.io/kittenpaw-blog/sitemap.xml
