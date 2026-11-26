@@ -26,6 +26,7 @@ article h2{font-size:20px;border-left:6px solid #b88a48;padding-left:12px;margin
 .summary{background:#faf6ee;border:1px solid #e6dccb;border-radius:14px;padding:16px 18px;margin:16px 0}.summary b{color:#9a6b2f}
 .items{display:grid;gap:12px;margin:18px 0}.item{display:flex;justify-content:space-between;align-items:center;gap:12px;border:1px solid #d6cec2;border-radius:14px;padding:14px 16px;background:#fffdf9}
 .item .n{font-weight:700}.item .s{font-size:13px;color:#8a8275}.btn{flex-shrink:0;background:#ff9900;color:#181716;font-weight:800;text-decoration:none;border-radius:24px;padding:9px 18px;font-size:14px}
+.vid{position:relative;aspect-ratio:16/9;margin:18px 0;border-radius:14px;overflow:hidden;background:#000}.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .yt{display:inline-block;margin-top:24px;background:#e2403a;color:#fff;text-decoration:none;font-weight:800;border-radius:24px;padding:10px 20px}
 footer{background:#181716;color:#aaa;font-size:13px;padding:24px 0;margin-top:30px}footer a{color:#ddd}
 ol,ul{padding-left:1.4em}li{margin:4px 0}@media(max-width:600px){article{padding:20px 18px}article h1{font-size:22px}.item{flex-direction:column;align-items:flex-start}}"""
@@ -75,16 +76,23 @@ posts = sorted(POSTS, key=lambda p: p["date"], reverse=True)
 write("/style.css", CSS); open(os.path.join(OUT, ".nojekyll"), "w").write("")
 import shutil, glob
 for f in glob.glob(os.path.join(os.path.dirname(os.path.abspath(__file__)), "static", "*")): shutil.copy(f, OUT)
+from videos import VIDEOS
+def video_html(p):
+    v = VIDEOS.get(p["slug"])
+    if not v: return ""
+    return f'<div class="vid"><iframe src="https://www.youtube.com/embed/{v}" title="{e(p["title"])}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>'
 for p in posts:
     path = f"/posts/{p['slug']}/"
+    v = VIDEOS.get(p["slug"]); ylink = f"https://www.youtube.com/watch?v={v}" if v else YT
     ld = json.dumps({"@context": "https://schema.org", "@type": "Article", "headline": p["title"], "datePublished": p["date"], "dateModified": p["date"], "description": p["desc"], "author": {"@type": "Organization", "name": SITE}}, ensure_ascii=False)
     body = f"""<article><span class="cat">{e(p["cat"])}</span><span class="date">{p["date"]}</span><h1>{e(p["title"])}</h1>
 <p class="disc">{e(DISCLOSE)}</p><div class="summary"><b>結論：</b>{e(p["summary"])}</div>
+{video_html(p)}
 {items_html(p["items"][:1])}
 {md(p["body"])}
 {items_html(p["items"])}
 <p>直らない場合や、どの方法で直ったかは、YouTubeのコメント欄で教えてください。</p>
-<a class="yt" href="{YT}" rel="noopener" target="_blank">▶ 動画で見る（YouTube）</a></article>"""
+<a class="yt" href="{ylink}" rel="noopener" target="_blank">▶ YouTubeで見る・コメントする</a></article>"""
     write(path, page(f'{p["title"]} | {SITE}', p["desc"], body, path, "article", f'<script type="application/ld+json">{ld}</script>'))
 write("/", page(f"{SITE} | {TAGLINE}", TAGLINE + "。GTA6、PS5、Ray-Ban Meta、Windowsのトラブル解決ガイド。", f'<p class="disc">{e(DISCLOSE)}</p>' + "".join(card(p) for p in posts), "/"))
 for c in CATS:
