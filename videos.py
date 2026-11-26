@@ -11,6 +11,7 @@ VIDEOS = {
 
 # 記事スラッグ → Metricool投稿のuuid（公開待ち）。公開後に動画IDを VIDEOS に移す。
 PENDING = {
+    "gta6-ssd-osusume": "-6346835893294772768",
     "rayban-meta-photo-import": "6081217715957810597",
     "rayban-meta-first-steps": "-8213444398175989843",
     "gta6-code-expiry": "-5640777564873931097",
