@@ -73,6 +73,8 @@ if os.path.exists(OUT): shutil.rmtree(OUT)
 os.makedirs(OUT)
 posts = sorted(POSTS, key=lambda p: p["date"], reverse=True)
 write("/style.css", CSS); open(os.path.join(OUT, ".nojekyll"), "w").write("")
+import shutil, glob
+for f in glob.glob(os.path.join(os.path.dirname(os.path.abspath(__file__)), "static", "*")): shutil.copy(f, OUT)
 for p in posts:
     path = f"/posts/{p['slug']}/"
     ld = json.dumps({"@context": "https://schema.org", "@type": "Article", "headline": p["title"], "datePublished": p["date"], "dateModified": p["date"], "description": p["desc"], "author": {"@type": "Organization", "name": SITE}}, ensure_ascii=False)
